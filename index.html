@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Homepage</title>
+    <style>
+        body {
+            font-family: 'Playfair Display',serif;
+            padding: 0;
+            background-color: #ABD6EB;
+            margin: 0;
+        }
+
+        .header {
+            background-color:rgb(240, 247, 248);
+            color: #109fc3;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 2;
+            font-family: 'Playfair Display',serif;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #109fc3;
+        }
+        .nav a {
+            position: relative;
+            display: flex;
+            color: #fff;
+            padding: 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .nav a:hover {
+            background-color: #ABD6EB;
+            color:rgb(13, 33, 254); 
+	        transform: scale(1.1);
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .content{
+            width: 70%;
+            margin: 70px auto;
+        }
+        #outerbox {
+            width: 450px;
+            overflow: hidden;
+            border-radius: 10px;
+            float:right;
+            margin: 0px 0 20px 60px;
+        }
+
+        #sliderbox {
+            position: relative;
+            display: flex;
+            width: 4500px;
+            height: 450px;
+            animation: slider 30s infinite;
+        }
+        #sliderbox img {
+            width: 450px;
+            height: 450px;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .open-modal {
+            padding: 10px 15px;
+            background-color:#f4f4f4;
+            color: rgb(26, 25, 25);
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            display: inline-block;
+            text-decoration: none;
+            
+
+        }
+
+        .open-modal:hover {
+            background-color:#000000;
+            color: rgb(245, 235, 235);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(208, 242, 255, 0.4);
+            text-align: center;
+            margin:0;
+        }
+
+        .modal-toggle {
+            display: none;
+        }
+
+        .modal-toggle:checked+.modal {
+            display: block;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 5px 10px 10px;
+        
+            text-align: center;
+        }
+        label1 {
+            margin: 5px 10px 10px;
+        
+            text-align: end;
+        }
+        
+
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color:#179cdf;
+            border: none;
+            padding: 10px;
+            color: #f1ebeb;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #109fc3;
+            color: #000000;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .register-link a {
+            background-color: #109fc3;
+            color: #f0f3f6;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: none;
+        }
+        .background-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border: none;
+            overflow: hidden;
+        }
+
+        @keyframes slider {
+
+            0%,
+            10% {
+                left: 0;
+            }
+
+            12.5%,
+            22.5% {
+                left: -450px;
+            }
+
+            25%,
+            35% {
+                left: -900px;
+            }
+
+            37.5%,
+            47.5% {
+                left: -1350px;
+            }
+
+            50%,
+            60% {
+                left: -1800px;
+            }
+
+            62.5%,
+            72.5% {
+                left: -2250px;
+            }
+
+            75%,
+            85% {
+                left: -2700px;
+            }
+
+            87.5%,
+            97.5% {
+                left: -3150px;
+            }
+
+            100% {
+                left: -3600px;
+            }
+        }
+        .info{
+            padding: 170px;
+            margin-top: 50px;
+        }
+        .h2
+    {
+        color: white;
+    }
+        .info p{
+            display: flex;
+            text-align: justify;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 17px;
+            border-radius: 10px;
+            margin-top: 40px 50px 0 0 ;
+        }
+        .info h2{
+            font-size: 35px;
+            margin: 0 0 10px 0;
+        }
+        .footer {
+            background-color: #f1f3f4;
+            color: #201f1f;
+            text-align: center;
+            padding: 2px;
+            
+        }
+        .category-buttons button {
+          background-color: white;
+        font-size: medium;
+          color:#201f1f;
+         border: none;
+         padding: 20px 30px;
+         margin: 5px;
+          cursor: pointer;
+         border-radius: 50px;
+}
+
+.category-buttons button:hover {
+            background-color: #c7def1;
+            color:white; 
+            transform: scale(1.1)
+        }
+        
+.section {
+    background-color:whitesmoke;
+            padding: 70px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-gap: 50px;
+            border-radius: 4%;
+        }
+.product:hover{
+    transform: scale(1.1)
+}
+        .product {
+            border:  3px solid #ABD6EB;
+            padding: 5px white;
+            text-align: center ;
+            border-radius: 5%;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: 286px;
+            width: 343px;
+            
+        }
+
+        h2 {
+  background-color:white;
+  color: #0c7994; 
+  padding: 20px;
+  margin: 10 19% 10 19%;
+  align-content: center;
+  font-size: xx-large;
+}
+.centainer {
+  background-color: #ABD6EB;
+  margin: 0;
+  padding: 100px;
+  height: 900;
+  width: 900;
+  display: flex;
+
+}
+
+
+.isection {
+  flex: 5;
+  padding: 70px;
+  background-color:whitesmoke;
+  margin: 14px;
+  width: 1000;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px #109fc3;; 
+  background-color:whitesmoke;
+  padding: 12px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: large;
+}
+.isection:hover{
+    transform: scale(1.1)
+}
+
+.section h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section li {
+  margin-bottom: 5px;
+  color:#109fc3;; 
+}
+
+.section li::before {
+  content: "\2022";
+  color:#109fc3;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.images {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.images img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.button {
+  background-color:  #109fc3;;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .centainer {
+    flex-direction: column;
+  }
+  
+  .section {
+    margin: 10px 0;
+  }
+
+  
+  .images {
+    flex-direction: column;
+  }
+}
+.button
+{
+    font-size: large;
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="logo.jpg" height="90px" width="260px">
+        </div>
+       
+    <div class="nav">
+        <a href="CRIBOTICS.html">Home</a>
+        <a href="PRODUCTS.html">Products</a>
+        <a href="Category.html">Category</a>
+        <a href="About.html">About</a>
+        <label for="modal-toggle" class="open-modal">Login</label>
+        <input type="checkbox" id="modal-toggle" class="modal-toggle">
+        <div class="modal">
+            <div class="modal-content">
+                <label for="modal-toggle" class="close">&times;</label>
+                <h2>Log-in</h2>
+                <form>
+                   
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username:</label>
+                   
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password:</label>
+                    <button type="submit">Submit</button>
+                    <div class="register-link">
+                        <a href="register.html">Register here!</a>
+                    </div>
+                  
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <main>
+    <div class="content">
+        <div id="outerbox">
+        <div id="sliderbox">
+            <img src="Lovot.png">
+            <img src="Emys.png">
+            <img src="Fable.png">
+            <img src="Kuri.png">
+            <img src="Lego WeDo 2.0.png">
+            <img src="Aibo.png">
+            <img src="Vector.png">
+            <img src="Slothbot.png">
+            <img src="Robonaut.png">
+        </div>
+        </div>
+    </div>
+    <div class="info">
+      <center>  <h1>Solve your problems with the power of robotics!</h1>
+        <p>We offer a cutting-edge selection of robots for every interest, from educational kits that spark curiosity to fun, interactive companions and powerful solutions for home and business. Explore our categories:  Education, Entertainment, Consumer, Humanoids, and Service robots find your perfect robotic partner today!</p>
+    </center><div class="category-buttons">
+             <br> <button><a href="PRODUCTS.html">SHOP NOW!</a></button>
+      </div>
+    </main>
+    
+    <section class="section">
+        <h2><center>Our latest products
+            
+        </center></h2>
+        <br>
+        <br>
+        <div class="product-grid">
+            <div class="product">
+                <img src="Lego WeDo 2.0.png" alt="Product 5">
+                <h3>Lego WeDo</h3>
+                <p> ₱17,569.00</p>
+            </div>
+            <div class="product">
+                <img src="Lego Mindstorms EV3.png" alt="Product 6">
+                <h3>Lego Mindstorms EV3</h3>
+                <p> ₱37,650.00</p>
+            </div>
+            <div class="product">
+                <img src="Lego Boost.png" alt="Product 7">
+                <h3>Lego Boost</h3>
+                <p> ₱23,516.54</p>
+            </div>
+            <div class="product">
+                <img src="Lego Mindstorms NXT.png" alt="Product 8">
+                <h3>Lego Mindstorms NXT</h3>
+                <p> ₱20,271.65 </p>
+            
+            </div>
+        </div>
+  <div>
+    <br>
+    <br><br><br>
+  </section>
+    <br>
+
+    <br>
+<section class="centainer">
+    <div class="isection">
+      <h2>Our CRIBOTICS list</h2>
+    
+         <br><br><br>
+        <button>Aibo</button>
+        <button>AlphaDog</button>
+        <button>Aquanaut</button>
+        <br>
+        <button>Armar</button>
+        <button>Asimo</button>
+        <button>BigDog</button><br>
+        <button>Cassie</button>
+        <button>Cubelet</button>
+        <button>Dash and Dot</button><br>
+        <button>Emiew</button>  
+        <button>Emys</button>
+        <button>Fable</button>
+        <button>Humanoids</button><br>
+        <button>Kuri</button>
+        <button>Lego Mindstorms EV3</button> <br>
+        <button>Lego Mindstorms NXT</button>
+        <button>Lego WeDo</button>
+        <button>Lovot</button><br>
+        <button>Pepper</button>
+        <button>Proteus</button>   
+        <button>Qtrobot</button>
+        <button>Robonaut</button><br>
+        <button>Replicator</button>
+        <button>Roomba</button>
+        <button>Slothbot</button>  
+        <button>Starship</button><br>
+        <button>Tertill</button>
+        <button>Tesla</button>
+        <button>Vector</button>
+        
+        
+    
+    </div>
+  
+    <div class="isection">
+      <h2>Welcome to Our Site!</h2>
+      <div class="images">
+        <img src="AlphaDog.png" alt="Image 1">
+        <img src="Big Dog.png" alt="Image 2">
+      </div>
+      <p>Experience the future of robotics at CRIBOTICS! We're passionate about bringing the latest advancements in robotic technology to you. Discover innovative robots designed for education, entertainment, home automation, and industrial applications.  Our carefully curated collection features only the highest-quality robots from leading manufacturers. Explore the possibilities today!</p>
+      <button><a href="About.html">more</a></button>
+      <p>Finding the right robot just got easier, we're dedicated to providing a seamless and enjoyable shopping experience.  Our user-friendly website makes it simple to browse our extensive collection of robots, and our expert customer service team is always available to answer your questions.  Find your perfect robot today we're here to help.</p>
+      
+    </div>
+  
+    <div class="isection">
+      <h2>OUR MISSON</h2>
+      <p> To provide access to the most advanced and reliable robotic solutions, empowering individuals and businesses to embrace the future of technology.</p>
+      <h2>OUR VISION</h2>
+      <p>To be the leading provider of innovative robotic solutions, shaping the future of automation and enhancing lives through technological advancement.</p>
+      <h2>OUR TEAM</h2>
+      <p>We're a passionate group of robotics enthusiasts dedicated to bringing you the best robotic solutions.  Our combined expertise in engineering, design, and customer service ensures a smooth and enjoyable shopping experience.  We're always here to help!</p>
+      
+    </div>
+  </div>
+</div>
+</section>
+    <div class="footer">
+        <p>&copyCopyright 2024. All Rights Reserved.</p>
+    </div> 
+</div>
+
+  </body>
+</html>
